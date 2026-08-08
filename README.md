@@ -6,7 +6,7 @@ The application allows users to securely create accounts, manage their income an
 
 ## 🚀 Live Demo
 
-🔗 **Live Application:** [YOUR_DEPLOYED_URL_HERE](https://expense-tracker-4cfw.onrender.com)
+🔗 **Live Application:** [GO_TO_WEBSITE](https://expense-tracker-4cfw.onrender.com)
 
 ## 📸 Screenshots
 
