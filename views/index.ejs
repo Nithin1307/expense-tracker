@@ -1,73 +1,82 @@
-<title>Expense Tracker</title>
-<link rel="stylesheet" href="/css/style.css">
-<div class="container">
-    <header>
-        <div>
-            <h1>Expense Tracker</h1>
-            <p>Welcome, <strong><%= userName %></strong></p>
-        </div>
-        <div class="header-actions">
-            <a href="/add-expense" class="add-button">+ Add Transaction</a>
-            <form action="/logout" method="POST">
-                <button type="submit" class="logout-button">Logout</button>
-            </form>
-        </div>
-    </header>
-    <div class="dashboard">
-        <div class="card">
-            <h3>Total Balance</h3>
-            <p class="balance">₹<%= balance %></p>
-        </div>
-        <div class="card">
-            <h3>Total Income</h3>
-            <p class="income">₹<%= income %></p>
-        </div>
-        <div class="card">
-            <h3>Total Expenses</h3>
-            <p class="expense">₹<%= expenses %></p>
-        </div>
-    </div>
-    <div class="transactions-section">
-        <div class="section-header">
-            <h2>Recent Transactions</h2>
-            <span>
-                <%= transactions.length %> Transactions
-            </span>
-        </div>
-        <% if (transactions.length === 0) { %>
-            <div class="empty">
-                <h3>No transactions yet</h3>
-                <p>Add your first income or expense.</p>
-                <a href="/add-expense">Add Transaction</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>Expense Tracker</h1>
+                <p>Welcome, <strong><%= userName %></strong></p>
             </div>
-        <% } else { %>
-            <% transactions.forEach(transaction => { %>
-                <div class="transaction">
-                    <div class="transaction-info">
-                        <h3><%= transaction.title %></h3>
-                        <p><%= transaction.category %> • 
-                            <%= new Date(transaction.date).toLocaleDateString("en-IN", {
-                                day: "2-digit",
-                                month: "short",
-                                year: "numeric"
-                            }) %>
-                        </p>
-                    </div>
-                    <div class="transaction-right">
-                        <% if (transaction.type === "income") { %>
-                            <p class="income">+ ₹<%= transaction.amount %></p>
-                        <% } else { %>
-                            <p class="expense">- ₹<%= transaction.amount %></p>
-                        <% } %>
-                        <div class="actions">
-                            <a href="/edit-expense/<%= transaction.id %>" class="edit-button">Edit</a>
-                            <form action="/delete-expense/<%= transaction.id %>" method="POST">
-                                <button type="submit" class="delete-button" onclick="return confirm('Are you sure you want to delete this transaction?')">Delete</button>
-                            </form>
+            <div class="header-actions">
+                <a href="/add-expense" class="add-button">+ Add Transaction</a>
+                <form action="/logout" method="POST">
+                    <button type="submit" class="logout-button">Logout</button>
+                </form>
+            </div>
+        </header>
+        <div class="dashboard">
+            <div class="card">
+                <h3>Total Balance</h3>
+                <p class="balance">₹<%= balance %></p>
+            </div>
+            <div class="card">
+                <h3>Total Income</h3>
+                <p class="income">₹<%= income %></p>
+            </div>
+            <div class="card">
+                <h3>Total Expenses</h3>
+                <p class="expense">₹<%= expenses %></p>
+            </div>
+        </div>
+        <div class="transactions-section">
+            <div class="section-header">
+                <h2>Recent Transactions</h2>
+                <span>
+                    <%= transactions.length %> Transactions
+                </span>
+            </div>
+            <% if (transactions.length === 0) { %>
+                <div class="empty">
+                    <h3>No transactions yet</h3>
+                    <p>Add your first income or expense.</p>
+                    <a href="/add-expense">Add Transaction</a>
+                </div>
+            <% } else { %>
+                <% transactions.forEach(transaction => { %>
+                    <div class="transaction">
+                        <div class="transaction-info">
+                            <h3><%= transaction.title %></h3>
+                            <p><%= transaction.category %> • 
+                                <%= new Date(transaction.date).toLocaleDateString("en-IN", {
+                                    day: "2-digit",
+                                    month: "short",
+                                    year: "numeric"
+                                }) %>
+                            </p>
+                        </div>
+                        <div class="transaction-right">
+                            <% if (transaction.type === "income") { %>
+                                <p class="income">+ ₹<%= transaction.amount %></p>
+                            <% } else { %>
+                                <p class="expense">- ₹<%= transaction.amount %></p>
+                            <% } %>
+                            <div class="actions">
+                                <a href="/edit-expense/<%= transaction.id %>" class="edit-button">Edit</a>
+                                <form action="/delete-expense/<%= transaction.id %>" method="POST">
+                                    <button type="submit" class="delete-button" onclick="return confirm('Are you sure you want to delete this transaction?')">Delete</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <% }) %>
-        <% } %>
+                <% }) %>
+            <% } %>
+        </div>
     </div>
-</div>
+</body>
+</html>
