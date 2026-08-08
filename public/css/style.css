@@ -377,41 +377,104 @@ header p {
 }
 
 @media (max-width: 700px) {
+    .container {
+        width: 100%;
+        padding: 20px 15px;
+    }
     header {
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
+        margin-bottom: 25px;
+    }
+    header h1 {
+        font-size: 26px;
+    }
+    header p {
+        font-size: 14px;
     }
     .header-actions {
         width: 100%;
-        flex-wrap: wrap;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .header-actions .add-button,
+    .header-actions form,
+    .header-actions .logout-button {
+        width: 100%;
+    }
+    .logout-button {
+        width: 100%;
     }
     .dashboard {
         grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 25px;
+    }
+    .card {
+        padding: 20px;
+    }
+    .card p {
+        font-size: 24px;
+    }
+    .transactions-section {
+        padding: 18px;
+    }
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
     }
     .transaction {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
+        padding: 18px 0;
+    }
+    .transaction-info {
+        width: 100%;
     }
     .transaction-right {
-        text-align: left;
         width: 100%;
+        text-align: left;
+    }
+    .transaction-right p {
+        margin: 0 0 10px 0;
     }
     .actions {
         justify-content: flex-start;
+        width: 100%;
     }
     .form-page {
-        margin: 30px auto;
+        width: 100%;
+        max-width: 100%;
+        margin: 25px auto;
+    }
+    .form-header {
+        text-align: left;
+    }
+    .form-header h1 {
+        font-size: 27px;
     }
     .form-card {
-        padding: 25px 20px;
+        padding: 22px 18px;
+        border-radius: 12px;
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group input[type="number"],
+    .form-group input[type="date"],
+    .form-group select {
+        height: 48px;
+        font-size: 16px;
     }
     .type-options {
         flex-direction: column;
+        gap: 10px;
     }
-    .transaction-form,
-    .auth-form {
-        max-width: 100%;
+    .submit-button {
+        height: 50px;
     }
 }
